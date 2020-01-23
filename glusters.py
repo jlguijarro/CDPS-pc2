@@ -4,8 +4,12 @@ from subprocess import call
 cmd1 = "sudo lxc-attach --clear-env -n nas1 -- bash -c \"gluster peer probe 20.20.4.22\""
 call(cmd1, shell=True)
 
+print("probe nas2")
+
 cmd2 = "sudo lxc-attach --clear-env -n nas1 -- bash -c \"gluster peer probe 20.20.4.23\""
 call(cmd2, shell=True)
+
+print ("probe nas3")
 
 cmd3 = "sudo lxc-attach --clear-env -n nas1 -- bash -c \"gluster volume create nas replica 3 20.20.4.21:/nas 20.20.4.22:/nas 20.20.4.23:/nas force\""
 call(cmd3, shell=True)
